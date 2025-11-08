@@ -4,46 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>kongkrai</title>
+    <title>cart</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>kongkrai</header>
-    <nav>
-        <button>MENU</button>
-        <button>ADD</button>
-        <button>CART</button>
-    </nav>
+
     <main>
-        <div>
-            <table>
-                <tr>
+        <section class="status-bar">stutus bar</section>
+        <section class="table-container">
+            <table class="queue-container">
+                <tr class="queue-header">
                     <th>queue</th>
                     <th>detail</th>
                     <th>owner</th>
                     <th>status</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>kraprao</td>
-                    <td>aim</td>
-                    <td>cooking</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>kaopad</td>
-                    <td>ferd</td>
-                    <td>pending</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>tomyum</td>
-                    <td>yoyo</td>
-                    <td>calceled</td>
+                <tr class="order">
+                    <td id="queue-number">1</td>
+                    <td id="queue-menu">kraprao</td>
+                    <td id="queue-owner">aim</td>
+                    <td id="queue-status">cooking</td>
                 </tr>
             </table>
-        </div>
+        </section>
+        <nav class="navbar">
+            <button>MENU</button>
+            <button>ADD</button>
+            <button>CART</button>
+        </nav>
     </main>
     <script src="app.js"></script>
 </body>

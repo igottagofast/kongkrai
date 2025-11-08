@@ -2,10 +2,21 @@
   padding: 0;
   margin: 0;
 }
-body {
-  background-color: rgb(255, 255, 255);
-}
 
-td {
-  border-bottom: 1px solid grey;
+@media screen and (max-width: 360px) {
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    background-color: rgb(226, 255, 226);
+  }
+  .status-bar {
+    position: fixed;
+    top: 0;
+  }
+  .navbar {
+    position: fixed;
+    bottom: 0;
+  }
 }
