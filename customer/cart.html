@@ -15,8 +15,7 @@
         <nav>navbar</nav>
     </header>
     <main>
-        <section class="order container">
-            <h3>order seletion</h3>
+        <section class="order-container">
             <div class="menu-container">
                 <div class="menu-number">
                     <label> 1 </label>
@@ -26,14 +25,124 @@
                     <input type="text" placeholder="customize here">
                 </div>
                 <div class="menu-option">
-                    <div>-quantity+</div>
-                    <div class="delete button">delete button</div>
+                    <div class="quantity-button">
+                        <div class="decrease">-</div>
+                        <input class="quantity" type="text" value="1">
+                        <div class="increase">+</div>
+                    </div>
+                    <div><button>delete</button></div>
+                </div>
+            </div>
+            <div class="menu-container">
+                <div class="menu-number">
+                    <label> 1 </label>
+                </div>
+                <div class="menu-detail">
+                    <input type="text" value="eiei">
+                    <input type="text" placeholder="customize here">
+                </div>
+                <div class="menu-option">
+                    <div class="quantity-button">
+                        <div class="decrease">-</div>
+                        <input class="quantity" type="text" value="1">
+                        <div class="increase">+</div>
+                    </div>
+                    <div><button>delete</button></div>
+                </div>
+            </div>
+            <div class="menu-container">
+                <div class="menu-number">
+                    <label> 1 </label>
+                </div>
+                <div class="menu-detail">
+                    <input type="text" value="eiei">
+                    <input type="text" placeholder="customize here">
+                </div>
+                <div class="menu-option">
+                    <div class="quantity-button">
+                        <div class="decrease">-</div>
+                        <input class="quantity" type="text" value="1">
+                        <div class="increase">+</div>
+                    </div>
+                    <div>
+                        <button class="pre-delete-button">🗑️
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
-        <section class="confirm container">confirm order</section>
+
+        <section class="confirm-container">
+            <h3>Customer Information</h3>
+            <label for="">Name</label>
+            <input class="customer-name" type="text" placeholder="Enter your name here" required>
+            <label for="">Tel.</label>
+            <input class="customer-phone" type="text" placeholder="09X-XXX-XXXX" required>
+            <p id="confirm-text" hidden>confirm your order?</p>
+            <div class="button-container">
+                <button id="order-button">Order Now</button>
+                <button id="cancel-button" hidden>Cancel</button>
+                <button id="confirm-button" hidden>Confirm</button>
+            </div>
+        </section>
     </main>
     <footer>author details</footer>
+
+    <script>
+        const orderButton = document.querySelector("#order-button")
+        const cancelButton = document.querySelector("#cancel-button")
+        const confirmButton = document.querySelector("#confirm-button")
+        const confirmText = document.querySelector("#confirm-text")
+
+
+        orderButton.addEventListener("click", () => {
+            orderButton.hidden = true;
+            cancelButton.hidden = false;
+            confirmButton.hidden = false;
+            confirmText.hidden = false;
+        })
+
+        cancelButton.addEventListener("click", () => {
+            orderButton.hidden = false;
+            cancelButton.hidden = true;
+            confirmButton.hidden = true;
+            confirmText.hidden = true;
+
+        })
+
+
+        document.querySelectorAll(".quantity-button").forEach(box => {
+
+            const input = box.querySelector(".quantity");
+            const inc = box.querySelector(".increase");
+            const dec = box.querySelector(".decrease");
+            let deleteTimer = null;
+
+            inc.addEventListener("click", () => {
+                input.value = Number(input.value) + 1;
+            });
+
+            dec.addEventListener("click", () => {
+                if (input.value > 1) {
+                    input.value = Number(input.value) - 1
+                }
+                else if (input.value == 0) {
+                    return
+                }
+                else {
+                    input.value = Number(input.value) - 1
+
+                    // รอ 1 วินาทีค่อยลบ
+                    deleteTimer = setTimeout(() => {
+                        console.log("ลบรายการแล้ว");
+                        deleteTimer = null;
+                    }, 1000);
+
+                    return;
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

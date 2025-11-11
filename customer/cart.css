@@ -1,7 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+}
+
 html,
 body {
   height: 100vh;
 }
+
 nav {
   width: 100%;
   background-color: grey;
@@ -10,7 +17,6 @@ nav {
 body {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
   height: 100vh;
 }
@@ -18,37 +24,185 @@ body {
 main {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  justify-content: center;
+  gap: 20px;
 }
-.container {
+
+.order-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  min-width: 500px;
+  min-width: 700px;
   min-height: 600px;
 
-  background-color: rgb(220, 220, 220);
+  border: 1px solid black;
 }
 
-.confirm {
+.confirm-container {
+  display: flex;
+  flex-direction: column;
+  width: 330px;
+  height: 350px;
+  padding: 15px;
+  padding-bottom: 40px;
+  border-radius: 40px;
+
+  background-color: rgb(255, 255, 255);
+
+  box-shadow: 0px 0px 30px -1px rgb(179, 179, 179);
 }
 
-.order {
+.confirm-container h3 {
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 10px;
+}
+.confirm-container label {
+  font-size: 18px;
+  font-weight: 500;
+
+  margin-bottom: 5px;
+  margin-left: 15px;
+}
+.confirm-container input {
+  height: 24px;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+
+  background-color: rgb(242, 242, 242);
+}
+.confirm-container input:focus {
+  outline: none;
+  box-shadow: inset 0px 0px 21px -1px rgb(229, 229, 229);
+  background-color: rgb(255, 255, 255);
+}
+.confirm-container input::placeholder {
+  color: rgb(180, 180, 180);
+}
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: auto;
+  gap: 10px;
+}
+#confirm-text {
+  text-align: center;
+  color: #fa5a0d;
+}
+
+.confirm-container button {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 14px 28px;
+
+  border: none;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+#order-button {
+  background-color: #fa5a0d;
+}
+#order-button:hover {
+  background-color: #ff7c3e;
+}
+#order-button:active {
+  background-color: #cf4a0a;
+}
+
+#cancel-button {
+  background-color: #d8341b;
+}
+#cancel-button:hover {
+  background-color: #e25858;
+}
+#cancel-button:active {
+  background-color: #b8493a;
+}
+
+#confirm-button {
+  background-color: #86c53e;
+}
+#confirm-button:hover {
+  background-color: #a1e258;
+}
+#confirm-button:active {
+  background-color: #7db83a;
 }
 
 .menu-container {
   border: 1px solid black;
   display: flex;
-  flex: column;
+  flex-direction: row;
 }
 .menu-number {
+  width: 50px;
 }
 .menu-detail {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
+
 .menu-option {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
   gap: 5px;
+}
+
+.quantity-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.quantity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  border-radius: 24px;
+  font-size: 16px;
+  width: 18px;
+  padding: 9px 18px;
+  background-color: rgb(242, 242, 242);
+}
+.quantity:hover {
+  box-shadow: inset 0px 0px 20px -10px rgb(162, 162, 162);
+  background-color: rgb(255, 255, 255);
+}
+.quantity:focus {
+  outline: none;
+  box-shadow: inset 0px 0px 20px -10px rgb(162, 162, 162);
+  background-color: rgb(255, 255, 255);
+}
+
+.increase,
+.decrease {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.pre-delete-button {
+  background: none;
+  border: none;
+  font-size: 18px;
+}
+.pre-delete-button:hover {
+  font-size: 26px;
+}
+.pre-delete-button:active {
+  font-size: 20px;
 }
