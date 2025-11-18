@@ -21,8 +21,14 @@
                     <label> 1 </label>
                 </div>
                 <div class="menu-detail">
-                    <input type="text" value="eiei">
-                    <input type="text" placeholder="customize here">
+                    <div class="input-section">
+                        <label for="">Menu</label>
+                        <input class="main-menu" type="text" value="eiei">
+                    </div>
+                    <div class="input-section">
+                        <label for="">Customize</label>
+                        <textarea class="custom-menu" placeholder="customize your menu here "></textarea>
+                    </div>
                 </div>
                 <div class="menu-option">
                     <div class="quantity-button">
@@ -30,43 +36,8 @@
                         <input class="quantity" type="text" value="1">
                         <div class="increase">+</div>
                     </div>
-                    <div><button>delete</button></div>
-                </div>
-            </div>
-            <div class="menu-container">
-                <div class="menu-number">
-                    <label> 1 </label>
-                </div>
-                <div class="menu-detail">
-                    <input type="text" value="eiei">
-                    <input type="text" placeholder="customize here">
-                </div>
-                <div class="menu-option">
-                    <div class="quantity-button">
-                        <div class="decrease">-</div>
-                        <input class="quantity" type="text" value="1">
-                        <div class="increase">+</div>
-                    </div>
-                    <div><button>delete</button></div>
-                </div>
-            </div>
-            <div class="menu-container">
-                <div class="menu-number">
-                    <label> 1 </label>
-                </div>
-                <div class="menu-detail">
-                    <input type="text" value="eiei">
-                    <input type="text" placeholder="customize here">
-                </div>
-                <div class="menu-option">
-                    <div class="quantity-button">
-                        <div class="decrease">-</div>
-                        <input class="quantity" type="text" value="1">
-                        <div class="increase">+</div>
-                    </div>
-                    <div>
-                        <button class="pre-delete-button">🗑️
-                        </button>
+                    <div class="delete-container">
+                        <button class="pre-delete-button">🗑️</button>
                     </div>
                 </div>
             </div>
@@ -89,6 +60,7 @@
     <footer>author details</footer>
 
     <script>
+        const menuContainer = document.querySelector(".menu-container")
         const orderButton = document.querySelector("#order-button")
         const cancelButton = document.querySelector("#cancel-button")
         const confirmButton = document.querySelector("#confirm-button")
@@ -116,7 +88,6 @@
             const input = box.querySelector(".quantity");
             const inc = box.querySelector(".increase");
             const dec = box.querySelector(".decrease");
-            let deleteTimer = null;
 
             inc.addEventListener("click", () => {
                 input.value = Number(input.value) + 1;
@@ -129,16 +100,12 @@
                 else if (input.value == 0) {
                     return
                 }
-                else {
+                else if (input.value == 1) {
                     input.value = Number(input.value) - 1
-
-                    // รอ 1 วินาทีค่อยลบ
-                    deleteTimer = setTimeout(() => {
-                        console.log("ลบรายการแล้ว");
-                        deleteTimer = null;
-                    }, 1000);
-
-                    return;
+                    const div = document.createElement("div");
+                    div.classList.add("delete-overlay");
+                    div.classList.add("blur");
+                    menuContainer.appendChild(div);
                 }
             });
         });
