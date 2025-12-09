@@ -264,15 +264,16 @@ main {
   justify-content: center;
   flex: 1;
 }
-.pre-delete-button {
+.delete-button {
   background: none;
   border: none;
   font-size: 18px;
+  cursor: pointer;
 }
-.pre-delete-button:hover {
+.delete-button:hover {
   font-size: 26px;
 }
-.pre-delete-button:active {
+.delete-button:active {
   font-size: 20px;
 }
 
@@ -280,11 +281,60 @@ main {
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
 
-  display: flex;
+  background-color: rgba(229, 229, 229, 0.198);
+  backdrop-filter: blur(8px);
+  display: none;
   justify-content: center;
   align-items: center;
+  border-radius: 18px;
+
   z-index: 99;
+}
+.delete-overlay {
+  cursor: pointer;
+}
+
+.delete-box {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+  border-radius: 20px;
+  text-align: center;
+  gap: 10px;
+}
+.delete-box {
+  cursor: default;
+}
+.delete-box p {
+  cursor: default;
+}
+.confirm-delete-button-conatiner {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: center;
+}
+.confirm-delete {
+  background: none;
+  border: none;
+}
+#no:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+#yes {
+  padding: 8px 16px;
+  background: #f73326;
+  color: white;
+  border-radius: 8px;
+}
+#yes:hover {
+  font-weight: bold;
+  cursor: pointer;
 }
