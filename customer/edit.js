@@ -30,9 +30,7 @@ fetch(`http://localhost:3000/order-items/${queueNo}`)
     loadCustomerInfo(data);
   });
 
-/* =========================================
-            2) โหลดข้อมูลลูกค้า
-        ========================================== */
+// 2) โหลดข้อมูลลูกค้า
 function loadCustomerInfo(data) {
   // front-end ไม่มี customer info ต้องดึงจาก queue API
   fetch("http://localhost:3000/queues")
@@ -44,9 +42,7 @@ function loadCustomerInfo(data) {
       }
     });
 }
-/* =========================================
-           3) Render รายการอาหารในหน้า edit
-        ========================================== */
+// 3) Render รายการอาหารในหน้า edit
 function renderItems() {
   menuList.innerHTML = "";
 
