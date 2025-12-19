@@ -1,0 +1,605 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+body {
+  margin-top: 130px;
+  padding: 20px;
+}
+
+/* =============== Navbar =============== */
+.navbar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  gap: 20px;
+  background: linear-gradient(
+    to bottom,
+    #fafafa 0%,
+    #fafafa 50%,
+    rgba(250, 250, 250, 0.7) 70%,
+    rgb(250 250 250) 85%,
+    rgb(250 250 250 / 24%) 100%
+  );
+  padding: 20px;
+  z-index: 1000;
+}
+
+.logo {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.navbar {
+  background-color: #fa5c01;
+  border-radius: 50px;
+  padding: 15px 200px;
+  display: flex;
+  align-items: center;
+  color: #fafafa;
+  gap: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.state {
+  flex: 1;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.add_btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: #fafafa;
+  border: none;
+  font-size: 30px;
+  color: #fa5c01;
+  transition: all 0.3s ease;
+  position: relative;
+  left: 170px;
+  cursor: pointer;
+}
+
+.add_btn:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.cart_btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-image: url("../images/cast_orange.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fafafa;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  left: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.cart_btn:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.cartQty {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 6px 10px;
+  background-color: white;
+  border-radius: 100px;
+
+  font-size: 18px;
+  font-weight: bold;
+  color: #fa5c01;
+}
+
+/* =============== queue cart =============== */
+.queue-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  display: grid;
+  grid-gap: 15px;
+}
+.queue-wrapper {
+  /* position: relative; */
+  border-radius: 25px;
+}
+.detail-panel {
+  position: relative;
+  background-color: #f0f0f0;
+  padding: 20px 30px;
+  border-radius: 0 0 25px 25px;
+  border: 2px solid #eee;
+  border-top: none; /* 🔥 ทำให้แปะติด queue-item.active */
+
+  /* ให้มันต่อเนื้อกับ active */
+  margin-top: -20px; /* เพราะ queue-item มี border 2px */
+}
+
+.queue-item {
+  display: flex;
+  background-color: white;
+  border-radius: 25px;
+  padding: 25px 30px;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 80px;
+  transition: box-shadow 0.2s;
+  border: 2px solid #eee;
+}
+
+.queue-item:hover {
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+}
+.queue-item.active {
+  background-color: #f0f0f0;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+
+  border: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  position: relative;
+  z-index: 99;
+}
+
+.queue-info {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.queue-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  min-width: 60px;
+}
+
+.queue-name {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  min-width: 80px;
+}
+
+.queue-phone {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+}
+
+.queue-status {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.status-text {
+  font-size: 18px;
+  font-weight: 700;
+  min-width: 100px;
+  text-align: right;
+}
+
+.status-text.done {
+  color: #4caf50;
+}
+
+.status-text.cooking {
+  color: #d4a000;
+}
+
+.status-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.done-dot {
+  background-color: #4caf50;
+}
+
+.cooking-dot {
+  background-color: #ffd700;
+}
+
+.pending-dot {
+  background-color: #9e9e9e;
+}
+
+.canceled-dot {
+  background-color: rgb(251, 56, 56);
+}
+
+.active {
+  background-color: #f0f0f0;
+  box-shadow: 0px 1px 6px -1px rgb(124, 124, 124);
+
+  z-index: 99;
+}
+
+/* ============== item  panel  ============== */
+
+.food-item {
+  display: flex;
+  /* position: relative; */
+  flex-direction: row;
+  padding: 20px 0;
+
+  background-color: #f0f0f0;
+}
+
+/* ============== เลขใน cart ============== */
+.item-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+
+  font-size: 24px;
+}
+
+/* ============== ชื่อ กะ ตามสั่ง ============== */
+.item-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  flex: 1;
+  gap: 15px;
+}
+/* ชื่อ */
+.item-detail input {
+  width: 400px;
+  padding: 8px;
+  font-size: 18px;
+  border: none;
+  border-radius: 24px;
+  padding: 14px 20px;
+
+  background-color: rgb(255, 255, 255);
+
+  transition: all 0.25s ease;
+}
+.item-detail input:hover {
+  box-shadow: 0px 0px 10px -5px rgb(124, 124, 124);
+}
+.item-detail input:focus {
+  outline: none;
+  box-shadow: 0px 0px 10px -5px rgb(124, 124, 124);
+  background-color: rgb(255, 255, 255);
+}
+
+/* รายละเอียด */
+.item-detail textarea {
+  width: 400px;
+  min-height: 100px;
+  padding: 14px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 14px;
+  resize: none;
+  line-height: 1.4;
+
+  background-color: rgb(255, 255, 255);
+
+  transition: all 0.25s ease;
+}
+.item-detail textarea:hover {
+  box-shadow: 0px 0px 10px -5px rgb(124, 124, 124);
+}
+.item-detail textarea:focus {
+  outline: none;
+  box-shadow: 0px 0px 10px -5px rgb(124, 124, 124);
+  background-color: rgb(255, 255, 255);
+}
+
+/* ============== ช่อง qty กะ ware ==============*/
+.item-quantity-ware {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+  margin-right: 40px;
+
+  gap: 20px;
+}
+
+/* quantity */
+.quantity-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.quantity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  border-radius: 24px;
+  font-size: 16px;
+  width: 55px;
+  padding: 9px 18px;
+  background-color: rgb(255, 255, 255);
+
+  transition: all 0.2s ease;
+}
+.quantity:hover {
+  box-shadow: inset 0px 1px 6px -1px rgb(162, 162, 162);
+  background-color: rgb(255, 255, 255);
+}
+.quantity:focus {
+  outline: none;
+  background-color: rgb(255, 255, 255);
+}
+.increase,
+.decrease {
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 100px;
+  user-select: none;
+
+  transition: all 0.2s ease;
+}
+.decrease {
+  transform-origin: right;
+}
+.increase {
+  transform-origin: left;
+}
+.increase:hover,
+.decrease:hover {
+  box-shadow: 0px 1px 6px -1px rgb(124, 124, 124);
+  background-color: #fa5a0d;
+  color: white;
+
+  transform: scale(1.5);
+}
+.increase:active,
+.decrease:active {
+  background-color: #ff7c3e;
+}
+
+/* ware */
+.item-ware {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.radio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.radio:hover {
+  cursor: pointer;
+}
+
+/* ซ่อน radio ตัวจริง */
+.radio input[type="radio"] {
+  display: none;
+}
+
+/* ปุ่มนอก radio */
+.radio-custom {
+  width: 22px;
+  height: 22px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  position: relative;
+}
+.radio:hover .radio-custom {
+  cursor: pointer;
+  background-color: white;
+  box-shadow: inset 0px 1px 6px -1px rgb(162, 162, 162);
+  transition: 0.3s ease;
+}
+
+/* ปุ่มใน radio */
+.radio-custom::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: #fa5a0d;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.2s ease;
+  box-shadow: 0px 1px 6px -1px rgb(124, 124, 124);
+}
+
+.radio input:checked + .radio-custom::after {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+/* ============== ช่องลบ ============== */
+.item-delete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  font-size: larger;
+
+  width: 50px;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+  transform-origin: center;
+}
+.delete-btn:hover {
+  transform: scale(1.4);
+}
+.delete-btn:active {
+  transform: scale(1.2);
+}
+
+/* confirm delete overlay */
+
+.delete-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(229, 229, 229, 0.198);
+  backdrop-filter: blur(8px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 18px;
+
+  z-index: 10;
+  cursor: pointer;
+}
+
+.delete-box {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+  border-radius: 20px;
+  text-align: center;
+  gap: 10px;
+
+  cursor: default;
+}
+
+.delete-box p {
+  cursor: default;
+}
+.confirm-delete-name-tel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14;
+  gap: 10px;
+}
+.confirm-name,
+.confirm-tel {
+  border: none;
+  background-color: rgb(243, 243, 243);
+  font-size: 17px;
+  border-radius: 20px;
+  padding: 9px 14px;
+  width: 200px;
+
+  transition: all 0.2s ease;
+}
+.confirm-name:hover {
+  box-shadow: 0px 0px 10px -2px rgb(185, 185, 185);
+}
+.confirm-name:focus {
+  outline: none;
+  box-shadow: 0px 0px 10px -5px rgb(185, 185, 185);
+}
+.confirm-tel:hover {
+  box-shadow: 0px 0px 10px -2px rgb(185, 185, 185);
+}
+.confirm-tel:focus {
+  outline: none;
+  box-shadow: 0px 0px 10px -5px rgb(185, 185, 185);
+}
+
+.confirm-delete-button-conatiner {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: center;
+}
+.confirm-delete {
+  background: none;
+  border: none;
+}
+#no:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+#yes {
+  padding: 8px 16px;
+  background: #f73326;
+  color: white;
+  border-radius: 8px;
+}
+#yes:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* status permission */
+
+.pending {
+}
+.cooking {
+}
+.done {
+  pointer-events: none;
+}
+.cancel {
+  pointer-events: none;
+}
+.edit-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edit-button {
+  color: white;
+  font-size: 14px;
+  border: none;
+  background-color: #fa5a0d;
+  padding: 10px 20px;
+  border-radius: 50px;
+
+  transition: all 0.2s ease;
+}
+.edit-button:hover {
+  transform: scale(1.2);
+}
+.edit-button:active {
+  transform: scale(1.1);
+}

@@ -6,130 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
     <link rel="stylesheet" href="cart.css">
-
 </head>
 
 <body>
-    <header>
-        Cart
-        <nav>navbar</nav>
-    </header>
+    <nav class="navbar-container">
+        <img src="../images/Logo_orange.png" alt="Logo" class="feed logo" id="logo" />
+        <div class="navbar">
+            <div class="state">making order</div>
+            <div class>
+                <button class="add_btn" id="AddOrder">
+                    <span>+</span>
+                </button>
+            </div>
+        </div>
+        <button class="cart_btn" id="cart">
+            <div class="cart"><span class="cartQty"></span></div>
+        </button>
+    </nav>
+
     <main>
-        <section class="order-container">
-            <div class="menu-container">
-                <div class="menu-number">
-                    <label> 1 </label>
-                </div>
-                <div class="menu-detail">
-                    <div class="input-section">
-                        <label for="">Menu</label>
-                        <input class="main-menu" type="text" value="eiei">
-                    </div>
-                    <div class="input-section">
-                        <label for="">Customize</label>
-                        <textarea class="custom-menu" placeholder="customize your menu here "></textarea>
-                    </div>
-                </div>
-                <div class="menu-option">
-                    <div class="quantity-button">
-                        <div class="decrease">-</div>
-                        <input class="quantity" type="text" value="1">
-                        <div class="increase">+</div>
-                    </div>
-                    <div class="delete-container">
-                        <button class="delete-button">🗑️</button>
-                    </div>
-                </div>
-
-                <div class="delete-overlay" hidden>
-                    <div class="delete-box">
-                        <p>Delete this item?</p>
-                        <div class="confirm-delete-button-conatiner">
-                            <button class="confirm-delete" id="no">No</button>
-                            <button class="confirm-delete" id="yes">Yes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="menu-container">
-                <div class="menu-number">
-                    <label> 1 </label>
-                </div>
-                <div class="menu-detail">
-                    <div class="input-section">
-                        <label for="">Menu</label>
-                        <input class="main-menu" type="text" value="eiei">
-                    </div>
-                    <div class="input-section">
-                        <label for="">Customize</label>
-                        <textarea class="custom-menu" placeholder="customize your menu here "></textarea>
-                    </div>
-                </div>
-                <div class="menu-option">
-                    <div class="quantity-button">
-                        <div class="decrease">-</div>
-                        <input class="quantity" type="text" value="1">
-                        <div class="increase">+</div>
-                    </div>
-                    <div class="delete-container">
-                        <button class="delete-button">🗑️</button>
-                    </div>
-                </div>
-
-                <div class="delete-overlay" hidden>
-                    <div class="delete-box">
-                        <p>Delete this item?</p>
-                        <div class="confirm-delete-button-conatiner">
-                            <button class="confirm-delete" id="no">No</button>
-                            <button class="confirm-delete" id="yes">Yes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="menu-container">
-                <div class="menu-number">
-                    <label> 1 </label>
-                </div>
-                <div class="menu-detail">
-                    <div class="input-section">
-                        <label for="">Menu</label>
-                        <input class="main-menu" type="text" value="eiei">
-                    </div>
-                    <div class="input-section">
-                        <label for="">Customize</label>
-                        <textarea class="custom-menu" placeholder="customize your menu here "></textarea>
-                    </div>
-                </div>
-                <div class="menu-option">
-                    <div class="quantity-button">
-                        <div class="decrease">-</div>
-                        <input class="quantity" type="text" value="1">
-                        <div class="increase">+</div>
-                    </div>
-                    <div class="delete-container">
-                        <button class="delete-button">🗑️</button>
-                    </div>
-                </div>
-
-                <div class="delete-overlay" hidden>
-                    <div class="delete-box">
-                        <p>Delete this item?</p>
-                        <div class="confirm-delete-button-conatiner">
-                            <button class="confirm-delete" id="no">No</button>
-                            <button class="confirm-delete" id="yes">Yes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section class="order-container"></section>
 
         <section class="confirm-container">
             <h3>Customer Information</h3>
-            <label for="">Name</label>
-            <input class="customer-name" type="text" placeholder="Enter your name here" required>
-            <label for="">Tel.</label>
-            <input class="customer-phone" type="text" placeholder="09X-XXX-XXXX" required>
-            <p id="confirm-text" hidden>confirm your order?</p>
+            <label>Name</label>
+            <input class="customer-name" type="text" placeholder="Enter your name here">
+
+            <label>Tel.</label>
+            <input class="customer-phone" type="text" placeholder="09X-XXX-XXXX">
+
+            <p id="confirm-text" hidden></p>
+
             <div class="button-container">
                 <button id="order-button">Order Now</button>
                 <button id="cancel-button" hidden>Cancel</button>
@@ -138,8 +45,9 @@
         </section>
 
     </main>
-    <footer>author details</footer>
+
     <script src="cart.js"></script>
+
 </body>
 
 </html>

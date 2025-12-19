@@ -9,101 +9,67 @@
 </head>
 
 <body>
+
     <header>
-        Cart
-        <nav>navbar</nav>
+        <nav class="navbar-container">
+            <img src="../images/Logo_orange.png" alt="Logo" class="feed logo" id="logo" />
+            <div class="navbar">
+                <div class="state">making order</div>
+                <div>
+                    <button class="add_btn" id="AddOrder">
+                        <span>+</span>
+                    </button>
+                </div>
+            </div>
+
+            <button class="cart_btn" id="cart">
+                <div class="cart"><span class="cartQty"></span></div>
+            </button>
+        </nav>
     </header>
     <main>
-        <section class="fixed-menu">
-            <div class="menu-list-container">
-                <div class="menu-catagory">
-                    <h2>ประเภทอาหาร</h2>
-                    <div class="menu-list">
-                        <div class="menu">
-                            <p>menu name</p>
-                            <button>+</button>
-                        </div>
-                    </div>
-                    <div class="menu-list">
-                        <div class="menu">
-                            <p>menu name</p>
-                            <button>+</button>
-                        </div>
-                    </div>
-                    <div class="menu-list">
-                        <div class="menu">
-                            <p>menu name</p>
-                            <button>+</button>
-                        </div>
-                    </div>
-                    <div class="menu-list">
-                        <div class="menu">
-                            <p>menu name</p>
-                            <button>+</button>
-                        </div>
-                    </div>
-                    <div class="menu-list">
-                        <div class="menu">
-                            <p>menu name</p>
-                            <button>+</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-catagory">
-                    <h2>ประเภทอาหาร</h2>
-                    <div class="menu-list">
-                        <div class="menu">
-                            <p>menu name</p>
-                            <button>+</button>
-                        </div>
-                    </div>
-                    <div class="menu-list">
-                        <div class="menu">
-                            <p>menu name</p>
-                            <button>+</button>
-                        </div>
-                    </div>
-                    <div class="menu-list">
-                        <div class="menu">
-                            <p>menu name</p>
-                            <button>+</button>
-                        </div>
-                    </div>
-                    <div class="menu-list">
-                        <div class="menu">
-                            <p>menu name</p>
-                            <button>+</button>
-                        </div>
-                    </div>
-                    <div class="menu-list">
-                        <div class="menu">
-                            <p>menu name</p>
-                            <button>+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="custom-menu">
+        <section class="fixed-menu"></section>
+
+        <section class="custom-menu-container">
             <h3>Custom Menu</h3>
-            <label for="">Menu</label>
-            <input type="text" placeholder="name">
-            <label for="">Detail</label>
-            <textarea placeholder="customize your menu here "></textarea>
-            <div class="ware-option-container">
-                <input type="radio" name="ware" value="1"> box
-                <input type="radio" name="ware" value="2"> plate
+            <div class="menu-container">
+                <label class="menu-label">Menu</label>
+                <input class="custom-menu" type="text" placeholder="name">
             </div>
+
+            <div class="detail-container">
+                <label class="menu-label" for="">Detail</label>
+                <textarea class="detail" placeholder="customize your menu here "></textarea>
+            </div>
+
             <div class="quantity-container">
-                <button>-</button>
-                <input type="number">
-                <button>+</button>
+                <div class="decrease">-</div>
+                <input class="quantity" type="text" value="1">
+                <div class="increase">+</div>
             </div>
-            <button>order</button>
+
+            <div class="ware-option-container">
+                <label class="radio">
+                    <input type="radio" name="ware" value="1">
+                    <span class="radio-custom"></span>
+                    plate
+                </label>
+
+                <label class="radio">
+                    <input type="radio" name="ware" value="2">
+                    <span class="radio-custom"></span>
+                    box
+                </label>
+            </div>
+
+            <div class="button-container">
+                <button class="add-order-btn">Add Order</button>
+            </div>
         </section>
 
     </main>
-    <footer>author details</footer>
+
+    <script src="menu.js"> </script>
 </body>
 
 </html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test queues</title>
+</head>
+
+<body>
+    <main class="queue-container">
+        <div class="queue-item">
+            <div class="queue-info">
+                <span class="queue-number">A66</span>
+                <span class="queue-name">เอม</span>
+                <span class="queue-phone">5555</span>
+            </div>
+            <div class="queue-status">
+                <span class="status-text done">DONE</span>
+                <span class="status-dot done-dot"></span>
+            </div>
+        </div>
+    </main>
+    <div class="queue"></div>
+</body>
+
+<script>
+    fetch("http://localhost:3000/queues")
+        .then(res => res.json())
+        .then(data => {
+            displayQueues(data);
+        });
+
+    function displayQueues(data) {
+        const container = document.querySelector(".queue-container");
+
+        // ล้างข้อมูลเก่าออกก่อน
+        container.innerHTML = "";
+
+        data.forEach(item => {
+
+            // เลือก class ตามสถานะ
+            let statusClass = "";
+            let dotClass = "";
+
+            switch (item.order_status) {
+                case "pending":
+                    statusClass = "pending";
+                    dotClass = "pending-dot";
+                    break;
+                case "cooking":
+                    statusClass = "cooking";
+                    dotClass = "cooking-dot";
+                    break;
+                case "done":
+                    statusClass = "done";
+                    dotClass = "done-dot";
+                    break;
+                case "cancel":
+                    statusClass = "cancel";
+                    dotClass = "cancel-dot";
+                    break;
+            }
+
+            // สร้าง HTML ของหนึ่งคิว
+            const div = document.createElement("div");
+            div.classList.add("queue-item");
+
+            div.innerHTML = `
+                <div class="queue-info">
+                    <span class="queue-number">${item.queue_no}</span>
+                    <span class="queue-name">${item.customer_name}</span>
+                    <span class="queue-phone">${item.customer_tel}</span>
+                </div>
+                <div class="queue-status">
+                    <span class="status-text ${statusClass}">${item.order_status.toUpperCase()}</span>
+                    <span class="status-dot ${dotClass}"></span>
+                </div>
+            `;
+
+            container.appendChild(div);
+        });
+    }
+</script>
+
+
+</html>

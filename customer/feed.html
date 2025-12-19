@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>feed</title>
+  <link rel="stylesheet" href="feedstyle.css" />
+</head>
+
+<body>
+  <!-- --------------------------------------- -->
+  <nav class="navbar-container">
+    <img src="../images/Logo_orange.png" alt="Logo" class="logo" />
+    <div class="navbar">
+      <div class="state"><span id="total-order"></span> queues waiting</div>
+      <div class>
+        <button class="add_btn" id="AddOrder">
+          <span>+</span>
+        </button>
+      </div>
+    </div>
+    <button class="cart_btn" id="cart">
+      <div class="cart"><span class="cartQty"></span></div>
+    </button>
+  </nav>
+
+  <!-- --------------------------------------- -->
+  <main class="queue-container"></main>
+
+  <script src="feedjs.js"></script>
+
+</body>
+
+</html>

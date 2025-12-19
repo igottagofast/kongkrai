@@ -4,19 +4,13 @@
   font-family: monospace;
 }
 
-html,
 body {
   height: 100vh;
-}
-
-body {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  cursor: default;
+  margin-top: 130px;
 }
 
-/* navbar */
 .navbar-container {
   display: flex;
   justify-content: center;
@@ -118,290 +112,54 @@ body {
   color: #fa5c01;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-  margin-top: 130px;
-}
-
 main {
+  flex: 1;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   gap: 20px;
+  padding: 20px;
 }
 
-.order-container {
+/* ===== MENU ITEM ===== */
+.menu {
   display: flex;
-  flex-direction: column;
-  min-width: 720px;
-  max-width: 1000px;
-  gap: 20px;
-}
-
-.confirm-container {
-  display: flex;
-  flex-direction: column;
-  width: 330px;
-  height: 350px;
+  flex-direction: row;
+  border: 1px solid #ccc;
   padding: 15px;
-  padding-bottom: 40px;
-  border-radius: 40px;
-
-  background-color: rgb(255, 255, 255);
-
-  box-shadow: 0px 0px 30px -10px rgb(179, 179, 179);
+  margin-bottom: 15px;
+  gap: 20px;
+  border-radius: 10px;
 }
 
-.confirm-container h3 {
-  font-size: 26px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 40px;
-  margin-top: 10px;
-}
-.confirm-container label {
-  font-size: 18px;
-  font-weight: 500;
-
-  margin-bottom: 5px;
-  margin-left: 15px;
-}
-.confirm-container input {
-  height: 24px;
-  border: none;
-  border-radius: 24px;
-  padding: 10px 15px;
-  margin-bottom: 20px;
-
-  background-color: rgb(242, 242, 242);
-
-  transition: all 0.25s ease;
-}
-.confirm-container input:focus {
-  outline: none;
-  box-shadow: inset 0px 0px 21px -1px rgb(229, 229, 229);
-  background-color: rgb(255, 255, 255);
-}
-.confirm-container input::placeholder {
-  color: rgb(180, 180, 180);
-}
-.button-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: auto;
-  gap: 10px;
-}
-#confirm-text {
-  text-align: center;
-  color: #fa5a0d;
+.menu-num {
+  font-size: 22px;
+  font-weight: 700;
+  min-width: 30px;
 }
 
-.confirm-container button {
-  font-size: 18px;
-  font-weight: bold;
-  padding: 14px 28px;
-
-  border: none;
-  border-radius: 30px;
-  color: white;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-#order-button {
-  background-color: #fa5a0d;
-}
-#order-button:hover {
-  background-color: #ff7c3e;
-}
-#order-button:active {
-  background-color: #cf4a0a;
-}
-
-#cancel-button {
-  background-color: #d8341b;
-}
-#cancel-button:hover {
-  background-color: #e25858;
-}
-#cancel-button:active {
-  background-color: #b8493a;
-}
-
-#confirm-button {
-  background-color: #86c53e;
-}
-#confirm-button:hover {
-  background-color: #a1e258;
-}
-#confirm-button:active {
-  background-color: #7db83a;
-}
-
-.menu-container {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-
-  border: 2px solid rgb(229, 229, 229);
-  border-radius: 18px;
-  height: 280px;
-
-  padding: 20px 0px;
-  transition: all 0.25s ease;
-}
-.menu-container:hover {
-  box-shadow: 0px 0px 21px -1px rgb(229, 229, 229);
-}
-
-/* =================ช่องลำดับ items================== */
-
-.menu-number {
-  width: 50px;
-  font-size: 24px;
-  font-weight: bold;
+.menu-detail,
+.menu-option {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
-}
-
-/* ================ชื่อ กะ ตามสั่ง================== */
-
-.menu-detail {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 20px;
+  justify-content: center;
+  gap: 10px;
 }
 
 .input-section {
   display: flex;
   flex-direction: column;
 }
-.input-section label {
-  padding-left: 24px;
-  padding-bottom: 5px;
-  font-weight: bold;
-}
 
-.main-menu {
-  width: 400px;
-  padding: 8px;
-  font-size: 18px;
-  border: none;
-  border-radius: 24px;
-  padding: 14px 20px;
-
-  background-color: rgb(242, 242, 242);
-
-  transition: all 0.25s ease;
-}
-.main-menu:focus {
-  outline: none;
-  box-shadow: inset 0px 0px 21px -1px rgb(229, 229, 229);
-  background-color: rgb(255, 255, 255);
-}
-
-.custom-menu {
-  width: 400px;
-  min-height: 100px;
-  padding: 14px 20px;
-  font-size: 18px;
-  border: none;
-  border-radius: 14px;
+.input-section input,
+.input-section textarea {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #f2f2f2;
   resize: none;
-  line-height: 1.4;
-
-  background-color: rgb(242, 242, 242);
-
-  transition: all 0.25s ease;
-}
-.custom-menu:focus {
-  outline: none;
-  box-shadow: inset 0px 0px 21px -1px rgb(229, 229, 229);
-  background-color: rgb(255, 255, 255);
 }
 
-/* ================menu-option================== */
-.menu-option {
-  display: flex;
-  flex-direction: row;
-  width: 200px;
-  gap: 5px;
-}
-
-.quantity-ware-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  gap: 25px;
-}
-
-.item-ware {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  gap: 20px;
-}
-
-.radio {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.radio:hover {
-  cursor: pointer;
-}
-
-/* ซ่อน radio ตัวจริง */
-.radio input[type="radio"] {
-  display: none;
-}
-
-/* ปุ่มนอก radio */
-.radio-custom {
-  width: 22px;
-  height: 22px;
-  background-color: rgb(242, 242, 242);
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: 8px;
-  position: relative;
-}
-.radio:hover .radio-custom {
-  cursor: pointer;
-  background-color: white;
-  box-shadow: inset 0px 1px 6px -1px rgb(162, 162, 162);
-  transition: 0.3s ease;
-}
-
-/* ปุ่มใน radio */
-.radio-custom::after {
-  content: "";
-  width: 12px;
-  height: 12px;
-  background: #fa5a0d;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  transition: 0.2s ease;
-  box-shadow: 0px 1px 6px -1px rgb(124, 124, 124);
-}
-
-.radio input:checked + .radio-custom::after {
-  transform: translate(-50%, -50%) scale(2);
-}
 /* ---- ปุ่ม quantity ---- */
 .quantity-button {
   display: flex;
@@ -461,7 +219,67 @@ main {
 .decrease:active {
   background-color: #ff7c3e;
 }
-/* ================ปุ่มpre delete================== */
+/* -------- ware buttoon ------------ */
+.item-ware {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.radio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.radio:hover {
+  cursor: pointer;
+}
+
+/* ซ่อน radio ตัวจริง */
+.radio input[type="radio"] {
+  display: none;
+}
+
+/* ปุ่มนอก radio */
+.radio-custom {
+  width: 22px;
+  height: 22px;
+  background-color: rgb(242, 242, 242);
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  position: relative;
+}
+.radio:hover .radio-custom {
+  cursor: pointer;
+  background-color: white;
+  box-shadow: inset 0px 1px 6px -1px rgb(162, 162, 162);
+  transition: 0.3s ease;
+}
+
+/* ปุ่มใน radio */
+.radio-custom::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: #fa5a0d;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.2s ease;
+  box-shadow: 0px 1px 6px -1px rgb(124, 124, 124);
+}
+
+.radio input:checked + .radio-custom::after {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+/* ----- ปุ่ม delete */
 .delete-container {
   display: flex;
   flex-direction: column;
@@ -545,4 +363,35 @@ main {
 #yes:hover {
   font-weight: bold;
   cursor: pointer;
+}
+
+/* ===== CUSTOMER INFO ===== */
+.customer-info {
+  border-left: 1px solid #ccc;
+  padding-left: 20px;
+  min-width: 250px;
+}
+
+.customer-info input {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.save-btn {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #fa5a0d;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background: #0b76d1;
 }

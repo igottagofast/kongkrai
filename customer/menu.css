@@ -9,16 +9,13 @@ body {
   height: 100vh;
 }
 
-nav {
-  width: 100%;
-  background-color: grey;
-}
-
 body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
+  cursor: default;
+  margin-top: 130px;
 }
 
 main {
@@ -27,24 +24,458 @@ main {
   justify-content: center;
   gap: 20px;
 }
-.fixed-menu {
-  background-color: beige;
-}
-.menu-list-container {
-  background-color: aliceblue;
-  width: 300px;
+
+/* =============================== navbar =============================== */
+.navbar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  gap: 20px;
+  background: linear-gradient(
+    to bottom,
+    #fafafa 0%,
+    #fafafa 50%,
+    rgba(250, 250, 250, 0.7) 70%,
+    rgb(250 250 250) 85%,
+    rgb(250 250 250 / 24%) 100%
+  );
+  padding: 20px;
+  z-index: 1000;
 }
 
-.menu {
+.logo {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.navbar {
+  background-color: #fafafa;
+  border-radius: 50px;
+  padding: 15px 200px;
+  display: flex;
+  align-items: center;
+  color: #111318;
+  gap: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.state {
+  flex: 1;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.add_btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: #fa5c01;
+  border: none;
+  font-size: 30px;
+  color: #fafafa;
+  transition: all 0.3s ease;
+  position: relative;
+  left: 170px;
+  cursor: pointer;
+}
+
+.add_btn:hover {
+  background-color: #f6610c;
+  transform: scale(1.05);
+}
+
+.cart_btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-image: url("../images/cast_orange.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fafafa;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  left: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.cart_btn:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.cartQty {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 6px 10px;
+  background-color: white;
+  border-radius: 100px;
+
+  font-size: 18px;
+  font-weight: bold;
+  color: #fa5c01;
+}
+
+/* =============================== fized menu section =============================== */
+.fixed-menu {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  min-width: 600px;
+  gap: 30px;
+}
+.menu-category h3 {
+  font-size: 28px;
+  margin-bottom: 13px;
+  margin-left: 20px;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu-list li {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 5px 15px;
+  font-size: 18px;
+  box-shadow: 0 3px 5px -4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border-bottom: 0.8px solid rgb(215, 215, 215);
+  min-height: 30px;
+
+  transition: all 0.25s ease;
+  transform-origin: center;
+}
+.menu-list li:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 0px 10px -2px rgb(187, 187, 187);
+  font-size: 19px;
+  border-radius: 100px;
 }
 
+/* ========== add button section ========== */
+.quantity-control {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.li-add-btn {
+  padding: 5px 10px;
+
+  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  border-radius: 100%;
+
+  transition: all 0.25s ease;
+  transform-origin: center;
+}
+.menu-list li:hover .li-add-btn {
+  background-color: #fa5a0d;
+  color: white;
+}
+.menu-list li .li-add-btn:hover {
+  box-shadow: 0px 0px 10px -2px rgb(187, 187, 187);
+  /* background-color: #ff7c3e; */
+  color: white;
+  cursor: pointer;
+  transform: scale(1.2);
+}
+.menu-list li .li-add-btn:active {
+  box-shadow: 0px 0px 10px -2px rgb(187, 187, 187);
+  background-color: #cf4a0a;
+  color: white;
+}
+/* ========== hidden add button ========== */
+.li-quantity {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  border-radius: 24px;
+  font-size: 14px;
+  width: 16px;
+  padding: 9px 16px;
+  background-color: rgb(242, 242, 242);
+  margin: 5px 0;
+
+  transition: all 0.25s ease;
+}
+.li-quantity:hover {
+  box-shadow: inset 0px 0px 20px -10px rgb(162, 162, 162);
+  background-color: rgb(255, 255, 255);
+}
+.li-quantity:focus {
+  outline: none;
+  box-shadow: inset 0px 0px 20px -10px rgb(162, 162, 162);
+  background-color: rgb(255, 255, 255);
+}
+.li-increase,
+.li-decrease {
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 100px;
+  user-select: none;
+
+  transition: all 0.2s ease;
+}
+.li-decrease {
+  transform-origin: right;
+}
+.li-increase {
+  transform-origin: left;
+}
+.li-increase:hover,
+.li-decrease:hover {
+  box-shadow: 0px 1px 6px -1px rgb(124, 124, 124);
+  background-color: #fa5a0d;
+  color: white;
+
+  transform: scale(1.5);
+}
+.li-increase:active,
+.li-decrease:active {
+  background-color: #ff7c3e;
+}
+/* =============================== custom menu section =============================== */
+
+.custom-menu-container {
+  display: flex;
+  flex-direction: column;
+  width: 330px;
+  height: 500px;
+  padding: 15px;
+  padding-bottom: 20px;
+  border-radius: 40px;
+
+  background-color: rgb(255, 255, 255);
+
+  box-shadow: 0px 0px 30px -10px rgb(179, 179, 179);
+}
+
+.custom-menu-container h3 {
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 10px;
+}
+.menu-label {
+  font-size: 18px;
+  font-weight: 500;
+
+  margin-bottom: 5px;
+  margin-left: 15px;
+}
+
+/* =================menu container================= */
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
 .custom-menu {
+  height: 24px;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 15px;
+  background-color: rgb(242, 242, 242);
+
+  transition: all 0.25s ease;
+}
+.custom-menu:focus {
+  outline: none;
+  box-shadow: inset 0px 0px 21px -1px rgb(229, 229, 229);
+  background-color: rgb(255, 255, 255);
+}
+
+/* =================custom container================= */
+.detail-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.detail {
+  min-height: 100px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 14px;
+  resize: none;
+  line-height: 1.4;
+  background-color: rgb(242, 242, 242);
+
+  transition: all 0.25s ease;
+}
+.detail:focus {
+  outline: none;
+  box-shadow: inset 0px 0px 21px -1px rgb(229, 229, 229);
+  background-color: rgb(255, 255, 255);
+}
+
+/* =================quantity================= */
+.quantity-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex: 1;
+  margin-bottom: 20px;
+}
+.quantity {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  border-radius: 24px;
+  font-size: 16px;
+  width: 18px;
+  padding: 9px 18px;
+  background-color: rgb(242, 242, 242);
+}
+.quantity:hover {
+  box-shadow: inset 0px 0px 20px -10px rgb(162, 162, 162);
+  background-color: rgb(255, 255, 255);
+}
+.quantity:focus {
+  outline: none;
+  box-shadow: inset 0px 0px 20px -10px rgb(162, 162, 162);
+  background-color: rgb(255, 255, 255);
+}
+.increase,
+.decrease {
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 100px;
+  user-select: none;
 
-  width: 330px;
-  background-color: rgb(182, 244, 244);
+  transition: all 0.2s ease;
+}
+.decrease {
+  transform-origin: right;
+}
+.increase {
+  transform-origin: left;
+}
+.increase:hover,
+.decrease:hover {
+  box-shadow: 0px 1px 6px -1px rgb(124, 124, 124);
+  background-color: #fa5a0d;
+  color: white;
+
+  transform: scale(1.5);
+}
+.increase:active,
+.decrease:active {
+  background-color: #cf4a0a;
+  color: white;
+}
+/* ===========ware-option-container=========== */
+.ware-option-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+.radio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.radio:hover {
+  cursor: pointer;
+}
+
+/* ซ่อน radio ตัวจริง */
+.radio input[type="radio"] {
+  display: none;
+}
+
+/* ปุ่มนอก radio */
+.radio-custom {
+  width: 22px;
+  height: 22px;
+  background-color: rgb(242, 242, 242);
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  position: relative;
+}
+.radio:hover .radio-custom {
+  cursor: pointer;
+  background-color: white;
+  box-shadow: inset 0px 1px 6px -1px rgb(162, 162, 162);
+  transition: 0.3s ease;
+}
+
+/* ปุ่มใน radio */
+.radio-custom::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: #fa5a0d;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.2s ease;
+  box-shadow: 0px 1px 6px -1px rgb(124, 124, 124);
+}
+
+.radio input:checked + .radio-custom::after {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+/* =================add order button================= */
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  gap: 10px;
+}
+.add-order-btn {
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  color: white;
+  background-color: #fa5a0d;
+}
+.add-order-btn:hover {
+  background-color: #ff7c3e;
+}
+.add-order-btn:active {
+  background-color: #cf4a0a;
 }
