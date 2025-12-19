@@ -3,29 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>seller feed</title>
-    <style>
-        * {
-            font-family: monospace;
-            box-sizing: border-box;
-        }
-
-        body {
-            padding: 20px;
-        }
-
-        .order-box {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-        }
-
-        select {
-            padding: 4px 8px;
-            font-size: 14px;
-        }
-    </style>
+    <link rel="stylesheet" href="feed.css">
 </head>
 
 <body>
@@ -35,117 +15,7 @@
     <div id="ordersContainer"></div>
     <p id="noOrdersText" hidden>วันนี้ยังไม่มีออเดอร์</p>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", loadOrders);
-
-        function loadOrders() {
-            fetch("http://localhost:3000/orders/today")
-                .then(res => res.json())
-                .then(data => {
-                    const container = document.getElementById("ordersContainer");
-                    container.innerHTML = "";
-                    const noOrders = document.getElementById("noOrdersText");
-
-                    if (!data || data.length === 0) {
-                        noOrders.hidden = false;
-                        return;
-                    }
-
-                    const orders = {};
-
-                    data.forEach(row => {
-                        if (!orders[row.order_id]) {
-                            orders[row.order_id] = {
-                                header: row,
-                                items: []
-                            };
-                        }
-                        orders[row.order_id].items.push(row);
-                    });
-
-                    // แสดงทุกออเดอร์
-                    Object.values(orders).forEach(order => {
-                        const box = document.createElement("div");
-                        box.className = "order-box";
-
-                        const h = order.header;
-
-                        box.innerHTML = `
-              <div class="order-header">
-                <strong>Queue No:</strong> ${h.queue_no}
-                <br><strong>Order ID:</strong> ${h.order_id}
-                <br><strong>สถานะ:</strong> 
-                <select class="status-select" data-id="${h.order_id}">
-                  <option value="pending" ${h.order_status === "pending" ? "selected" : ""}>pending</option>
-                  <option value="cooking" ${h.order_status === "cooking" ? "selected" : ""}>cooking</option>
-                  <option value="done" ${h.order_status === "done" ? "selected" : ""}>done</option>
-                  <option value="cancel" ${h.order_status === "cancel" ? "selected" : ""}>cancel</option>
-                </select>
-                <br><strong>ลูกค้า:</strong> ${h.customer_name} (${h.customer_tel})
-                <br><strong>เวลา:</strong> ${h.order_time}
-              </div>
-
-              <table>
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>เมนู</th>
-                    <th>รายละเอียด</th>
-                    <th>จำนวน</th>
-                    <th>ภาชนะ</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${order.items.map((item, i) => `
-                    <tr>
-                      <td>${i + 1}</td>
-                      <td>${item.item_name}</td>
-                      <td>${item.item_detail || "-"}</td>
-                      <td>${item.item_quantity}</td>
-                      <td>${item.item_ware}</td>
-                    </tr>
-                  `).join("")}
-                </tbody>
-              </table>
-            `;
-
-                        container.appendChild(box);
-                    });
-
-                    // หลังสร้าง element ให้ bind event เปลี่ยนสถานะ
-                    attachStatusEvents();
-                })
-                .catch(err => {
-                    console.error(err);
-                    alert("เกิดข้อผิดพลาดในการโหลดข้อมูล");
-                });
-        }
-
-        function attachStatusEvents() {
-            document.querySelectorAll(".status-select").forEach(select => {
-                select.addEventListener("change", function () {
-                    const orderId = this.dataset.id;
-                    const newStatus = this.value;
-
-                    fetch(`http://localhost:3000/order/${orderId}/status`, {
-                        method: "PUT",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({ status: newStatus })
-                    })
-                        .then(res => res.json())
-                        .then(result => {
-                            console.log(result);
-                            alert(`เปลี่ยนสถานะเป็น '${newStatus}' แล้ว`);
-                        })
-                        .catch(err => {
-                            console.error(err);
-                            alert("อัปเดตสถานะไม่สำเร็จ");
-                        });
-                });
-            });
-        }
+    <script src="feed.js">
     </script>
 
 </body>
